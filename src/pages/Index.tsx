@@ -4,14 +4,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
 
 const timelineEvents = [
-  { year: 1919, title: 'Основание фашистского движения', description: 'Бенито Муссолини создаёт «Итальянский союз борьбы» (Fasci Italiani di Combattimento) в Милане 23 марта' },
+  { year: 1919, title: 'Основание фашистского движения', description: 'Бенито Муссолини создаёт «Итальянский союз борьбы» в Милане 23 марта' },
   { year: 1921, title: 'Национальная фашистская партия', description: 'Преобразование движения в Национальную фашистскую партию (PNF)' },
-  { year: 1922, title: 'Поход на Рим', description: 'Октябрь: 30 000 чернорубашечников маршируют на Рим. Муссолини становится премьер-министром' },
-  { year: 1924, title: 'Убийство Маттеотти', description: 'Убийство социалиста Джакомо Маттеотти усиливает диктаторский режим' },
-  { year: 1925, title: 'Установление диктатуры', description: 'Муссолини объявляет себя главой правительства с диктаторскими полномочиями' },
-  { year: 1926, title: 'Законы о защите государства', description: 'Принятие репрессивных законов, запрет оппозиционных партий и свободной прессы' },
-  { year: 1929, title: 'Латеранские соглашения', description: 'Примирение с Ватиканом, создание города-государства Ватикан' },
-  { year: 1935, title: 'Вторжение в Эфиопию', description: 'Начало колониальной экспансии в Африке' },
+  { year: 1922, title: '🔥 Поход на Рим', description: '30 000 чернорубашечников маршируют на Рим. Муссолини становится премьер-министром' },
+  { year: 1924, title: 'Убийство Маттеотти', description: 'Убийство социалиста Джакомо Маттеотти — начало террора против оппозиции' },
+  { year: 1925, title: 'Установление диктатуры', description: 'Муссолини объявляет себя диктатором с неограниченной властью' },
+  { year: 1926, title: 'Репрессивные законы', description: 'Запрет всех партий кроме фашистской, цензура прессы, тайная полиция' },
+  { year: 1929, title: 'Договор с Ватиканом', description: 'Примирение с церковью. Создание города-государства Ватикан' },
+  { year: 1930, title: 'Пик режима', description: 'Полный контроль над Италией. Начало подготовки к войне' },
 ];
 
 const Index = () => {
@@ -22,12 +22,28 @@ const Index = () => {
       {/* Header */}
       <header className="border-b-2 border-primary/30 bg-[#E8DCC8] sepia-shadow">
         <div className="container mx-auto px-4 py-8">
+          <div className="text-center mb-4">
+            <div className="inline-block bg-primary/10 px-4 py-2 rounded-lg mb-4">
+              <p className="text-sm font-semibold text-primary">📚 Школьная презентация по истории</p>
+            </div>
+          </div>
           <h1 className="text-5xl md:text-7xl font-bold text-primary text-center mb-2">
             ФАШИЗМ В ИТАЛИИ
           </h1>
-          <p className="text-xl md:text-2xl text-center text-primary/80 font-light">
+          <p className="text-xl md:text-2xl text-center text-primary/80 font-light mb-4">
             1920 — 1930
           </p>
+          <div className="flex flex-wrap justify-center gap-4 mt-6">
+            <div className="bg-card px-4 py-2 rounded-lg sepia-shadow">
+              <p className="text-sm"><strong>Период:</strong> 10 лет диктатуры</p>
+            </div>
+            <div className="bg-card px-4 py-2 rounded-lg sepia-shadow">
+              <p className="text-sm"><strong>Лидер:</strong> Бенито Муссолини</p>
+            </div>
+            <div className="bg-card px-4 py-2 rounded-lg sepia-shadow">
+              <p className="text-sm"><strong>Тип режима:</strong> Тоталитаризм</p>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -74,8 +90,9 @@ const Index = () => {
                   </Card>
                 </div>
 
-                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground font-bold text-lg sepia-shadow z-10 shrink-0">
-                  {event.year}
+                <div className="flex flex-col items-center justify-center w-20 h-20 rounded-full bg-primary text-primary-foreground font-bold sepia-shadow z-10 shrink-0">
+                  <div className="text-xs opacity-80">год</div>
+                  <div className="text-xl">{event.year}</div>
                 </div>
 
                 <div className="flex-1 hidden md:block" />
@@ -100,8 +117,12 @@ const Index = () => {
 
       {/* Main Content Tabs */}
       <section className="container mx-auto px-4 py-12">
-        <Tabs defaultValue="rise" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 bg-secondary/50 p-1 gap-1">
+        <Tabs defaultValue="intro" className="w-full">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-6 bg-secondary/50 p-1 gap-1">
+            <TabsTrigger value="intro" className="text-xs md:text-sm">
+              <Icon name="Info" size={16} className="mr-1" />
+              Введение
+            </TabsTrigger>
             <TabsTrigger value="rise" className="text-xs md:text-sm">
               <Icon name="TrendingUp" size={16} className="mr-1" />
               Приход к власти
@@ -112,17 +133,77 @@ const Index = () => {
             </TabsTrigger>
             <TabsTrigger value="reforms" className="text-xs md:text-sm">
               <Icon name="Landmark" size={16} className="mr-1" />
-              Реформы
+              Что изменилось
             </TabsTrigger>
             <TabsTrigger value="society" className="text-xs md:text-sm">
               <Icon name="Users" size={16} className="mr-1" />
-              Общество
+              Жизнь людей
             </TabsTrigger>
-            <TabsTrigger value="sources" className="text-xs md:text-sm">
-              <Icon name="Archive" size={16} className="mr-1" />
-              Источники
+            <TabsTrigger value="conclusion" className="text-xs md:text-sm">
+              <Icon name="CheckCircle" size={16} className="mr-1" />
+              Выводы
             </TabsTrigger>
           </TabsList>
+
+          <TabsContent value="intro" className="mt-6">
+            <Card className="vintage-border bg-card sepia-shadow">
+              <CardHeader>
+                <CardTitle className="text-3xl text-primary">Что такое фашизм?</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="bg-[#E8DCC8] p-6 rounded-lg">
+                  <h3 className="text-2xl font-semibold text-primary mb-4 text-center">📖 Определение</h3>
+                  <p className="text-lg leading-relaxed text-center">
+                    <strong>Фашизм</strong> — это политический режим, при котором вся власть сосредоточена в руках одного лидера (диктатора), 
+                    запрещены другие партии, подавляется свобода слова, а государство полностью контролирует жизнь граждан.
+                  </p>
+                </div>
+                
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="bg-[#E8DCC8] p-4 rounded-lg text-center">
+                    <div className="text-4xl mb-2">👑</div>
+                    <h4 className="font-semibold text-primary mb-2">Один вождь</h4>
+                    <p className="text-sm">Вся власть у диктатора, нет выборов</p>
+                  </div>
+                  <div className="bg-[#E8DCC8] p-4 rounded-lg text-center">
+                    <div className="text-4xl mb-2">🚫</div>
+                    <h4 className="font-semibold text-primary mb-2">Нет свободы</h4>
+                    <p className="text-sm">Запрет критики, цензура, репрессии</p>
+                  </div>
+                  <div className="bg-[#E8DCC8] p-4 rounded-lg text-center">
+                    <div className="text-4xl mb-2">⚔️</div>
+                    <h4 className="font-semibold text-primary mb-2">Милитаризм</h4>
+                    <p className="text-sm">Культ силы, агрессивная внешняя политика</p>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-primary mb-3 flex items-center gap-2">
+                    <Icon name="MapPin" size={20} />
+                    Почему именно Италия?
+                  </h3>
+                  <div className="space-y-2">
+                    <div className="flex items-start gap-2">
+                      <span className="text-primary font-bold">•</span>
+                      <p>После Первой мировой войны страна в кризисе: безработица, инфляция, голод</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-primary font-bold">•</span>
+                      <p>Люди недовольны правительством, которое не может решить проблемы</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-primary font-bold">•</span>
+                      <p>Муссолини обещает «сильную руку» и возвращение величия Рима</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-primary font-bold">•</span>
+                      <p>Италия стала <strong>первой фашистской страной в мире</strong> (1922)</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
 
           <TabsContent value="rise" className="mt-6">
             <Card className="vintage-border bg-card sepia-shadow">
@@ -319,59 +400,87 @@ const Index = () => {
             </Card>
           </TabsContent>
 
-          <TabsContent value="sources" className="mt-6">
+          <TabsContent value="conclusion" className="mt-6">
             <Card className="vintage-border bg-card sepia-shadow">
               <CardHeader>
-                <CardTitle className="text-3xl text-primary">Архивные источники и документы</CardTitle>
+                <CardTitle className="text-3xl text-primary">Выводы: Уроки истории</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-primary mb-2 flex items-center gap-2">
-                    <Icon name="ScrollText" size={20} />
-                    Первичные источники
+              <CardContent className="space-y-6">
+                <div className="bg-[#E8DCC8] p-6 rounded-lg">
+                  <h3 className="text-2xl font-semibold text-primary mb-4 text-center flex items-center justify-center gap-2">
+                    <Icon name="Lightbulb" size={28} />
+                    Главное о фашизме в Италии
                   </h3>
-                  <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li>«Доктрина фашизма» — статья Муссолини в Итальянской энциклопедии (1932)</li>
-                    <li>Законы о защите государства (1926)</li>
-                    <li>Латеранские соглашения (1929)</li>
-                    <li>Официальные речи и выступления Бенито Муссолини</li>
-                    <li>Документы Национальной фашистской партии (PNF)</li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <div className="text-2xl">1️⃣</div>
+                      <p className="text-lg"><strong>Фашизм пришёл к власти легально</strong> через слабость демократии и кризис в стране</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="text-2xl">2️⃣</div>
+                      <p className="text-lg"><strong>Режим быстро уничтожил все свободы:</strong> партии, прессу, права человека</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="text-2xl">3️⃣</div>
+                      <p className="text-lg"><strong>Тоталитарный контроль</strong> охватил образование, культуру, семью, все сферы жизни</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="text-2xl">4️⃣</div>
+                      <p className="text-lg"><strong>Итальянский фашизм стал моделью</strong> для других диктатур в Европе (Германия, Испания)</p>
+                    </div>
+                  </div>
                 </div>
+
                 <div>
-                  <h3 className="text-xl font-semibold text-primary mb-2 flex items-center gap-2">
-                    <Icon name="Library" size={20} />
-                    Историография
+                  <h3 className="text-xl font-semibold text-primary mb-3 flex items-center gap-2">
+                    <Icon name="AlertCircle" size={20} />
+                    Почему это важно помнить?
                   </h3>
-                  <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li>Де Гранд А. «Итальянский фашизм: его происхождение и развитие»</li>
-                    <li>Пэйн С. «История фашизма 1914-1945»</li>
-                    <li>Джентиле Э. «Истоки фашистской идеологии 1918-1925»</li>
-                    <li>Морган Ф. «Итальянский фашизм 1919-1945»</li>
-                  </ul>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-primary/5 p-4 rounded-lg">
+                      <h4 className="font-semibold text-primary mb-2">⚠️ Опасность диктатуры</h4>
+                      <p className="text-sm">Показывает, как быстро можно потерять свободу, если не защищать демократию</p>
+                    </div>
+                    <div className="bg-primary/5 p-4 rounded-lg">
+                      <h4 className="font-semibold text-primary mb-2">🧠 Критическое мышление</h4>
+                      <p className="text-sm">Учит не верить пропаганде и простым обещаниям «сильной руки»</p>
+                    </div>
+                    <div className="bg-primary/5 p-4 rounded-lg">
+                      <h4 className="font-semibold text-primary mb-2">🕊️ Ценность прав человека</h4>
+                      <p className="text-sm">Напоминает о важности свободы слова, выборов и защиты меньшинств</p>
+                    </div>
+                    <div className="bg-primary/5 p-4 rounded-lg">
+                      <h4 className="font-semibold text-primary mb-2">📚 Историческая память</h4>
+                      <p className="text-sm">Помогает не повторять ошибки прошлого в современном мире</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-primary mb-2 flex items-center gap-2">
-                    <Icon name="Film" size={20} />
-                    Визуальные источники
-                  </h3>
-                  <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li>Кинохроника Института LUCE (государственная пропаганда)</li>
-                    <li>Плакаты и агитационные материалы 1920-1930-х годов</li>
-                    <li>Фотографии Поход на Рим и массовых мероприятий</li>
-                    <li>Архитектурные памятники фашистской эпохи</li>
-                  </ul>
+
+                <div className="bg-primary/10 p-6 rounded-lg border-l-4 border-primary">
+                  <p className="text-lg italic text-center">
+                    «Тот, кто не помнит своего прошлого, обречён пережить его снова» <br/>
+                    <span className="text-sm opacity-80">— Джордж Сантаяна, философ</span>
+                  </p>
                 </div>
+
                 <div>
-                  <h3 className="text-xl font-semibold text-primary mb-2 flex items-center gap-2">
-                    <Icon name="Database" size={20} />
-                    Архивы
+                  <h3 className="text-xl font-semibold text-primary mb-3 flex items-center gap-2">
+                    <Icon name="BookOpen" size={20} />
+                    Для дополнительного изучения
                   </h3>
-                  <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li>Центральный государственный архив Италии (ACS)</li>
-                    <li>Архив МИД Италии (ASDMAE)</li>
-                    <li>Музей освобождения Рима</li>
-                    <li>Фонд Джентиле по изучению фашизма</li>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2">
+                      <Icon name="Book" size={16} className="mt-1" />
+                      <span>Учебник истории 9-11 класс: раздел «Тоталитарные режимы в Европе»</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Film" size={16} className="mt-1" />
+                      <span>Документальные фильмы о Муссолини и фашистской Италии</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Globe" size={16} className="mt-1" />
+                      <span>Музеи истории XX века (Рим, Милан, Музей Холокоста)</span>
+                    </li>
                   </ul>
                 </div>
               </CardContent>
@@ -381,11 +490,19 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t-2 border-primary/30 bg-[#E8DCC8] mt-12 py-6">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-muted-foreground text-sm">
-            Историческая презентация • Фашизм в Италии 1920-1930гг
-          </p>
+      <footer className="border-t-2 border-primary/30 bg-[#E8DCC8] mt-12 py-8">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-4">
+            <h3 className="text-xl font-semibold text-primary mb-2">Спасибо за внимание!</h3>
+            <p className="text-muted-foreground">Историческая презентация для школы</p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+            <span>📅 Период: 1920-1930 гг</span>
+            <span>•</span>
+            <span>👤 Лидер: Бенито Муссолини</span>
+            <span>•</span>
+            <span>🇮🇹 Страна: Италия</span>
+          </div>
         </div>
       </footer>
     </div>
